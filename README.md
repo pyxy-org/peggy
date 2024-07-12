@@ -1,7 +1,8 @@
 # peggy
-A simple PEG parser generator, focused on python's grammar. Mostly a wrapper for `pegen` as it exists in the cpython source.
+A simple PEG parser generator, focused on python's grammar. Mostly a wrapper for `pegen` *as it exists in the cpython source*.
 
-It's different in that it directly uses `python.gram` from the cpython source. The problem with doing that is that all actions in that grammar are written for C code. For example:
+`peggy` is different from the [pegen package](https://github.com/we-like-parsers/pegen) (which is a different code base) in that it directly uses `python.gram` from the cpython source.
+The problem with doing that is that all actions in that grammar are written for C code. For example:
 
 ```
 # Class definitions
@@ -20,7 +21,8 @@ class_def_raw[stmt_ty]:
                      c, NULL, t, EXTRA) }
 ```
 
-`peggy` makes this work by stripping all return types and actions from the grammar. Instead of actions, it returns the name of the rule it matched in addition to the matched tokens. This makes it useful if you just care about rules, which is all `pyxy` needs.
+`peggy` makes this work by stripping all return types and actions from the grammar. Instead of actions, it returns the name of the rule it matched in addition to the matched tokens.
+This makes it useful if you just care about rules, which is all `pyxy` needs.
 
 ## Summary
 ### Disadvantages
